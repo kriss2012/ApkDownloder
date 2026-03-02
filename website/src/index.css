@@ -1,0 +1,618 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #00f2ff;
+  /* Cyber Blue */
+  --secondary: #7000ff;
+  /* Neon Purple */
+  --accent: #ff00c8;
+  /* Shocking Pink */
+  --bg-dark: #050505;
+  --card-bg: #111111;
+  --text-light: #f8fafc;
+  --text-dim: #94a3b8;
+  --holographic: linear-gradient(135deg, #00f2ff, #7000ff, #ff00c8, #00f2ff);
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --card-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.9);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  overflow-x: hidden;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+}
+
+.canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.overlay {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  padding: 4rem 2rem;
+}
+
+.glass-card {
+  background: var(--glass);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border);
+  border-radius: 2rem;
+  padding: 2.5rem;
+  box-shadow: var(--card-shadow);
+}
+
+.glass-card:hover {
+  border-color: rgba(99, 102, 241, 0.6);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 50px rgba(99, 102, 241, 0.25);
+}
+
+.hero {
+  max-width: 900px;
+  margin: 0 auto 6rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid var(--primary);
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+  object-fit: cover;
+}
+
+.profile-info h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.bio {
+  color: #94a3b8;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.social-link {
+  font-size: 0.875rem;
+  color: #94a3b8;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  color: white;
+  background: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.hero h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: clamp(3rem, 10vw, 5rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #00f2ff, #7000ff, #ff00c8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2rem;
+  animation: shimmer 5s linear infinite;
+  background-size: 200% auto;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.hero-description {
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--text-dim);
+  letter-spacing: 0.2em;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.app-icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 2.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-bottom: 5rem;
+}
+
+.app-icon-card {
+  aspect-ratio: 0.75;
+  background: var(--card-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 12px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden !important;
+}
+
+.app-icon-card:hover {
+  border-color: var(--primary) !important;
+}
+
+.icon-container-small {
+  background: linear-gradient(135deg, rgba(0, 242, 255, 0.1), rgba(112, 0, 255, 0.1)) !important;
+  border: 1px solid var(--primary) !important;
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 50% !important;
+  color: var(--primary) !important;
+  z-index: 5;
+}
+
+.app-name-small {
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--text-light);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  z-index: 5;
+}
+
+.apk-card.expanded {
+  background: var(--card-bg) !important;
+  border-radius: 1.5rem !important;
+  padding: 0 !important;
+  box-shadow: var(--card-shadow) !important;
+  width: min(92vw, 400px);
+  position: relative;
+  overflow: hidden !important;
+  border: 1px solid var(--glass-border) !important;
+  display: flex;
+  flex-direction: column;
+  z-index: 1001;
+  max-height: 90vh;
+  /* Better safety for small mobiles */
+}
+
+@media (max-width: 480px) {
+  .apk-card.expanded {
+    width: 95vw;
+    border-radius: 1.25rem !important;
+  }
+}
+
+.apk-card.expanded::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 3px;
+  background: var(--holographic);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.card-art-section {
+  width: 100%;
+  height: 60%;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 2px solid var(--glass-border);
+}
+
+.card-art-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.art-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, var(--card-bg));
+  z-index: 2;
+}
+
+.icon-badge {
+  position: absolute;
+  bottom: 15px;
+  /* Moved inside the art section slightly */
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  background: var(--card-bg);
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  z-index: 10;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  transform: rotate(-5deg);
+}
+
+.card-info-section {
+  padding: 1.25rem 1.25rem 1.5rem;
+  /* Reduced top padding */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.card-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.35rem;
+  /* Slightly smaller for reliability */
+  color: var(--text-light);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0;
+  line-height: 1.2;
+  word-break: break-word;
+  /* Crucial for long words like FloodGuard */
+}
+
+@media (max-width: 480px) {
+  .card-title {
+    font-size: 1.25rem;
+  }
+
+  .parchment-title {
+    font-size: 1.5rem;
+  }
+}
+
+.card-rarity {
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.2rem 0.6rem;
+  background: rgba(255, 0, 200, 0.1);
+  border-radius: 4px;
+}
+
+.card-description {
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--text-dim);
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.card-stats-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid var(--glass-border);
+}
+
+@media (max-width: 360px) {
+  .card-stats-row {
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+}
+
+.stat-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-box .label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  color: var(--primary);
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.stat-box .value {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.btn-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.action-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.8rem;
+  /* Slightly smaller for mobile layout */
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-primary:active,
+.btn-outline:active {
+  background: #ffffff !important;
+  color: #000000 !important;
+  transform: none;
+  /* No scaling for zero lag */
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--bg-dark);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-light);
+  border: 1px solid var(--glass-border);
+}
+
+.close-action {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1002;
+  /* Above card frame */
+}
+
+.app-icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-bottom: 4rem;
+}
+
+.app-icon-card {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem !important;
+  cursor: pointer;
+  border-radius: 1.5rem !important;
+  text-align: center;
+}
+
+.icon-container-small {
+  width: 60px;
+  height: 60px;
+  border-radius: 1.25rem;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.app-name-small {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #94a3b8;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+}
+
+.modal-content-wrapper {
+  position: relative;
+  z-index: 1001;
+  width: min(95vw, 400px);
+  display: flex;
+  justify-content: center;
+}
+
+/* Removed redundant expanded card definition */
+
+/* Removed unused close-btn class */
+
+.icon-container-wrapper.large {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 2.5rem;
+}
+
+.icon-container-wrapper.large .icon-container {
+  width: 100px;
+  height: 100px;
+}
+
+@media (max-width: 768px) {
+  .overlay {
+    padding: 3rem 1.5rem;
+  }
+
+  .hero {
+    margin-bottom: 4rem;
+  }
+
+  /* Cleanup */
+  .modal-overlay {
+    padding: 0;
+  }
+
+  .app-icon-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+  }
+}
+
+/* Loader Styles */
+.loader-wrapper {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-dark);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  text-align: center;
+}
+
+.loader-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loader-title {
+  font-size: 5rem;
+  font-weight: 900;
+  letter-spacing: 1rem;
+  background: linear-gradient(to right, #818cf8, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+.loader-line {
+  width: 100px;
+  height: 2px;
+  background: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.loader-subtitle {
+  color: #94a3b8;
+  letter-spacing: 0.5rem;
+  font-weight: 500;
+}
+
+.loader-spinner {
+  width: 50px;
+  height: 50px;
+  border: 2px solid var(--primary);
+  background: rgba(99, 102, 241, 0.1);
+}
+
+@media (max-width: 768px) {
+  .loader-title {
+    font-size: 3rem;
+    letter-spacing: 0.5rem;
+  }
+}
